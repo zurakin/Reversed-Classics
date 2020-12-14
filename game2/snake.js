@@ -83,10 +83,13 @@ function Snake() {
 
   this.move = function () {
     if (this.quantified()){
-      for (i=0; i<this.body.length; i+=floor(scl/speed)){
+      for (i=0; i<this.body.length; i++){
         if (!this.invincible && dist(this.x, this.y, this.body[i][0], this.body[i][1]) == 0){
           this.die();
         }
+      }
+      if (!this.invincible && (this.x<0 || this.x>width-scl || this.y<0 || this.y>height-scl)){
+        this.die();
       }
       new_dir = this.queue.shift();
       while ((new_dir=='u' && this.dir=='d')
@@ -126,9 +129,6 @@ function Snake() {
     }
     else{
       this.x-=this.speed;
-    }
-    if (!this.invincible && (this.x<0 || this.x>width-scl || this.y<0 || this.y>height-scl)){
-      this.die();
     }
     if (this.growing==0){
       this.body.shift()

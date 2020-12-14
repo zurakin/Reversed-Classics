@@ -15,7 +15,7 @@ function Snake() {
   }
 
   this.quantified = function (){
-  return (this.x%scl == 0 && this.y%scl == 0 && this.queue.length >0);
+  return (this.x%scl == 0 && this.y%scl == 0);
   }
 
   this.inverse = function () {
@@ -91,31 +91,34 @@ function Snake() {
       if (!this.invincible && (this.x<0 || this.x>width-scl || this.y<0 || this.y>height-scl)){
         this.die();
       }
-      new_dir = this.queue.shift();
-      while ((new_dir=='u' && this.dir=='d')
-    || (new_dir=='d' && this.dir=='u')
-  ||(new_dir=='r' && this.dir=='l')
-||(new_dir=='l' && this.dir=='r')){
-        if (this.queue.length>0){
-          new_dir = this.queue.shift();
-        }else{
-          new_dir = this.dir;
-          break;
+      if (this.queue.length>0){
+        new_dir = this.queue.shift();
+        while (
+          (new_dir=='u' && this.dir=='d')
+        ||(new_dir=='d' && this.dir=='u')
+        ||(new_dir=='r' && this.dir=='l')
+        ||(new_dir=='l' && this.dir=='r')){
+          if (this.queue.length>0){
+            new_dir = this.queue.shift();
+          }else{
+            new_dir = this.dir;
+            break;
+          }
         }
+        this.dir = new_dir;
       }
-      this.dir = new_dir;
-    }
-    if (dist(this.x, this.y, a.x, a.y)==0){
-      if (a.type != 1){
-        this.inverse();
+      if (dist(this.x, this.y, a.x, a.y)==0){
+        if (a.type != 1){
+          this.inverse();
 
+        }
+        this.score++;
+        if (this.score == 30){
+          this.speed = speed*3;
+        }
+        a.respawn();
+        this.growing += floor(scl/this.speed);
       }
-      this.score++;
-      if (this.score == 30){
-        this.speed = speed*3;
-      }
-      a.respawn();
-      this.growing += floor(scl/this.speed);
     }
     this.body.push([this.x, this.y]);
     if (this.dir === 'u'){

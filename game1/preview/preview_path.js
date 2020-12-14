@@ -1,7 +1,5 @@
 function preview_path(){
-
-
-  this.init = function(n){
+    this.init = function(n){
     this.arr = [];
     this.visited = [];
     this.n = n;
@@ -31,7 +29,7 @@ function preview_path(){
       line(x1, y1, x1 + tales_coeff * (x2-x1), y1 + tales_coeff * (y2-y1));
       this.progress+=1/this.iterations;
     }else{
-      screen = 1
+      screen = 'game1';
     };
     dots[this.visited[0]].draw_selected(this.clr);
     for (i=0; i<floor(this.progress); i++){

@@ -7,7 +7,7 @@ function Apple(){
 
   this.show = function () {
     if (this.type == 1){
-    image(apple_img, this.x-5, this.y-5, scl+10, scl+10);
+    image(apple_img, this.x-scl2, this.y-scl2, scl+scl2*2, scl+scl2*2);
   }else{
     image(berry_img, this.x-5, this.y-5, scl+10, scl+10);
   }};

@@ -13,14 +13,18 @@ function mousePressed1() {
 
 function mouseReleased1() {
   if (array_compare(preview_path.arr, path.arr.reverse())){
-    screen = 3;
+    screen = 'preview';
     path.init();
     s.growing += 20;
     s.score+=2;
-    preview_path.init(floor(s.score/3)+1);
+    if (floor(s.score/3)+1>nb_dots){
+      screen = 'game2';
+    }else{
+      preview_path.init(floor(s.score/3)+1);
+    }
   }
   else{
-    screen = 2;
+    screen = 'game2';
   }
   path.pressed = false;
 }

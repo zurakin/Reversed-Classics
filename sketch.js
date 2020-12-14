@@ -21,7 +21,7 @@ function setup() {
   scl = scl-(scl%(speed*4));
   scl2 = floor(scl/10)+2;
   createCanvas(w * scl, h*scl);
-  r = 30;
+  ball_radius = 30;
   dots = [];
   //creating dots objects
   angle = 0;

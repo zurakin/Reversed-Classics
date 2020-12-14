@@ -11,7 +11,7 @@ function path(){
         stroke(this.clr);
         strokeWeight(10);
         for (i=0; i<dots.length; i++){
-          if (dist(dots[i].x*scl, dots[i].y*scl, mouseX, mouseY)<r){
+          if (dist(dots[i].x*scl, dots[i].y*scl, mouseX, mouseY)<ball_radius){
             dots[i].clr = this.clr;
             adding = true;
             for (j=0; j<this.arr.length; j++){

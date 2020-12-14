@@ -2,7 +2,7 @@ function dot(){
   this.init = function (x, y){
     this.x = x;
     this.y = y;
-    this.radius = r;
+    this.radius = ball_radius;
     this.original_clr = color('#669199');
     this.clr = color('#669199');
   }

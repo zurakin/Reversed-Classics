@@ -103,15 +103,16 @@ function Snake() {
       this.dir = new_dir;
     }
     if (dist(this.x, this.y, a.x, a.y)==0){
-      if (a.type != 1 && this.growing==0){
+      if (a.type != 1){
         this.inverse();
+
       }
       this.score++;
       if (this.score == 30){
-        this.speed*=2;
+        this.speed = speed*3;
       }
       a.respawn();
-      this.growing = floor(scl/this.speed);
+      this.growing += floor(scl/this.speed);
     }
     this.body.push([this.x, this.y]);
     if (this.dir === 'u'){
@@ -126,7 +127,7 @@ function Snake() {
     else{
       this.x-=this.speed;
     }
-    if (!this.invincible && this.x<0 || this.x>width-scl || this.y<0 || this.y>height-scl){
+    if (!this.invincible && (this.x<0 || this.x>width-scl || this.y<0 || this.y>height-scl)){
       this.die();
     }
     if (this.growing==0){

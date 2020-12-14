@@ -13,12 +13,13 @@ function preload(){
 
 function setup() {
   // textFont(font);
+  frameRate(60);
   leaderBoard = [];
   h = 16;
   w = 26;
   scl = floor(0.8*windowWidth/26);
-  speed = floor(windowWidth/640);
-  scl = scl-(scl%(speed*4));
+  speed = floor(windowWidth/540);
+  scl = scl-(scl%(speed*6));
   scl2 = floor(scl/10)+2;
   createCanvas(w * scl, h*scl);
   ball_radius = 30;
@@ -70,15 +71,19 @@ function setup() {
 function draw() {
   switch (screen){
     case 'menu':
+      // frameRate(60);
       draw_menu();
       break;
     case 'game1':
+      // frameRate(60);
       draw_game1();
       break;
     case 'game2':
+      // frameRate(30);
       draw_game2();
       break;
     case 'preview':
+      // frameRate(60);
       draw_preview();
       break;
   }

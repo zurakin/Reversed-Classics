@@ -83,6 +83,9 @@ function Snake() {
 
   this.move = function () {
     if (this.quantified()){
+      if (this.score == 30){
+        this.speed = speed*3;
+      }
       for (i=0; i<this.body.length; i++){
         if (!this.invincible && dist(this.x, this.y, this.body[i][0], this.body[i][1]) == 0){
           this.die();
@@ -113,9 +116,7 @@ function Snake() {
 
         }
         this.score++;
-        if (this.score == 30){
-          this.speed = speed*3;
-        }
+
         a.respawn();
         this.growing += floor(scl/this.speed);
       }
